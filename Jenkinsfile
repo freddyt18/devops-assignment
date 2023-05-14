@@ -33,6 +33,7 @@ pipeline {
                     git branch && \\
                     ls -al && \\
                     git checkout master && \\
+                    git config pull.rebase false && \\
                     git pull
                 '''
 

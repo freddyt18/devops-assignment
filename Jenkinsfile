@@ -25,7 +25,7 @@ pipeline {
                     ansible-playbook playbooks/02_create_droplet.yml -e "digital_ocean_token=${digital_ocean_token} cloudflare_email=${cloudflare_email} cloudflare_api_token=${cloudflare_api_token}"
                 """
 
-                cd '''
+                sh '''
                     cd ~ && \\
                     mkdir tmp_droplet && \\
                     cd tmp_droplet && \\

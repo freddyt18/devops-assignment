@@ -27,8 +27,10 @@
     api_token: "{{ cloudflare_api_token }}"
 
 - name: Edit hosts file
-  lineinfile:
+  blockinfile:
     path: /var/lib/jenkins/workspace/DevOps/jenkins_infra/Ansible/playbooks/hosts
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
     insertafter: '\[droplet\]'
-    line: "{{ created_droplet_public_ip }}"
+    block: "{{ created_droplet_public_ip }}"
+
 

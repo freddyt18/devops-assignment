@@ -1,2 +1,17 @@
 ---
 # tasks file for nginx
+- name: Check if Nginx is installed
+  shell: which nginx
+  register: nginx_installed
+  ignore_errors: true
+
+- name: Set nginx_already_installed variable
+  set_fact:
+    nginx_already_installed: "{{ 'yes' if nginx_installed.rc == 0 else 'no' }}"
+
+- name: Install Nginx
+  community.general.package:
+    name: nginx
+    state: present
+  when: nginx_already_installed == "no"
+

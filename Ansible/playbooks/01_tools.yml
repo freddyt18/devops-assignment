@@ -1,8 +1,8 @@
 ---
 - hosts: "{{ host }}"
   roles:
-    - tools
     - docker
     - kubectl
+    - nginx
 
   

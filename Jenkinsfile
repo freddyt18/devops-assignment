@@ -31,7 +31,9 @@ pipeline {
 
                 sh '''
                     git branch && \\
-                    ls -al
+                    ls -al && \\
+                    git checkout master && \\
+                    git pull
                 '''
 
                 // sh '''

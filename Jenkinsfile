@@ -19,11 +19,31 @@ pipeline {
 
         stage('Create a Droplet and Point the domain to the Droplet') {
             steps {
-                sh """
-                    cd ${WORKSPACE_DIR} && \\
-                    cd ${PLAYBOOK_DIR} && \\
-                    ansible-playbook playbooks/02_create_droplet.yml -e "digital_ocean_token=${digital_ocean_token} cloudflare_email=${cloudflare_email} cloudflare_api_token=${cloudflare_api_token} github_token=${github_token} github_username=${github_username} github_email=${github_email}"
-                """
+                // sh """
+                //     cd ${WORKSPACE_DIR} && \\
+                //     cd ${PLAYBOOK_DIR} && \\
+                //     ansible-playbook playbooks/02_create_droplet.yml -e "digital_ocean_token=${digital_ocean_token} cloudflare_email=${cloudflare_email} cloudflare_api_token=${cloudflare_api_token}"
+                // """
+                
+                sh '''
+                    touch test.txt
+                '''
+
+                sh '''
+                    git branch && \\
+                    ls -al && \\
+                    git checkout master && \\
+                    git config pull.rebase false && \\
+                    git pull
+                '''
+
+                // sh '''
+                    // git checkout master && \\
+                    // git pull && \\
+                    // git add . && \\
+                    // git commit -m "Added the droplet IP" && \\
+                    // git push origin master
+                // '''
             }
         }
     }

@@ -25,3 +25,10 @@
     value: "{{ created_droplet_public_ip }}"
     account_email: "{{ cloudflare_email }}"
     api_token: "{{ cloudflare_api_token }}"
+
+- name: Edit hosts file
+  lineinfile:
+    path: /var/lib/jenkins/workspace/DevOps/jenkins_infra/Ansible/playbooks/hosts
+    insertafter: '\[droplet\]'
+    line: "{{ created_droplet_public_ip }}"
+

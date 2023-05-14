@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('First'){
+        stage('Installing Tools'){
             steps {
-                sh 'echo "Hello World"'
+                sh 'ls ~/personal/devops-assignment/'
             }
         }
     }

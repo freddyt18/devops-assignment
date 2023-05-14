@@ -32,7 +32,7 @@ pipeline {
                     cd tmp_droplet && \\
                     
                     git clone https://github.com/freddyt18/devops-assignment.git && \\
-                    cp ~/workspace/DevOps/jenkins_infra/Ansible/hosts ~/tmp_droplet/devops-assignment/Ansible/hosts && \\
+                    cp ~/workspace/DevOps/jenkins_infra/Ansible/playbooks/hosts ~/tmp_droplet/devops-assignment/Ansible/playbooks/hosts && \\
                     cd devops-assignment/Ansible && \\
                     
                     git add . && \\

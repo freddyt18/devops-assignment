@@ -1,11 +1,26 @@
 ---
 # tasks file for github
-- name: Add, commit, and push changes
-  community.general.git:
+- name: Set GitHub token
+  ansible.builtin.set_fact:
+    github_token: "{{ github_token }}"
+
+- name: Add changes
+  ansible.builtin.git:
     repo: /var/lib/jenkins/workspace/DevOps/jenkins_infra
     add: .
+
+- name: Commit changes
+  ansible.builtin.git:
+    repo: /var/lib/jenkins/workspace/DevOps/jenkins_infra
     commit: true
     msg: "update"
-    push: true
-    push_option: origin master
-    key_file: "{{ github_token }}"
+
+- name: Push changes
+  ansible.builtin.command:
+    chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
+    cmd: git push origin master
+    environment:
+      GIT_ASKPASS: /bin/echo
+      GIT_USERNAME: "{{ github_token }}"
+      GIT_PASSWORD: "{{ github_token }}"
+

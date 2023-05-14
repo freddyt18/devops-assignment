@@ -30,7 +30,8 @@ pipeline {
                 '''
 
                 sh '''
-                    git branch
+                    git branch && \\
+                    ls -al
                 '''
 
                 // sh '''

@@ -3,8 +3,11 @@
 - name: Create DigitalOcean droplet
   community.digitalocean.digital_ocean_droplet:
     state: present
-    name: my-droplet
+    name: devops-assignment
     oauth_token: "{{ digital_ocean_token }}"
     size: s-2vcpu-4gb
-    region: nyc1
+    region: sgp1
     image: ubuntu-20-04-x64
+    ssh_keys:
+      - "{{ lookup('file', '/var/lib/jenkins/.ssh/id_rsa.pub') }}"
+      - "{{ lookup('file', '/var/lib/jenkins/.ssh/root_id_rsa.pub') }}"

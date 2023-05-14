@@ -2,5 +2,5 @@
 ansible-playbook playbooks/01_tools.yml 
 
 02
-ansible-playbook playbook.yml -e "digital_ocean_token="
+ansible-playbook 02_create_droplet.yml -e "digital_ocean_token="
 

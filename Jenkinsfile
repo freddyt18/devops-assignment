@@ -12,7 +12,7 @@ pipeline {
                 sh """
                     cd ${WORKSPACE_DIR} && \\
                     cd ${PLAYBOOK_DIR} && \\
-                    ansible-playbook playbooks/tools.yml
+                    ansible-playbook playbooks/01_tools.yml
                 """
             }
         }

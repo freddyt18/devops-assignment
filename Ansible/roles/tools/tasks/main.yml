@@ -1,2 +1,6 @@
 ---
 # tasks file for tools
+- name: Check if Docker is already installed
+  debug:
+    msg: "Docker already installed"
+  when: already_installed == "yes"

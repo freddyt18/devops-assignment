@@ -9,7 +9,7 @@
     region: sgp1
     image: ubuntu-20-04-x64
     ssh_keys:
-      - 4e:62:f4:03:40:21:eb:2c:4b:d4:53:f5:27:8c:35:a2
+      - 1b:75:78:1d:e8:b6:68:a0:a2:9b:32:3c:f2:b6:34:77
       - b9:4a:2a:24:cf:af:61:f6:e1:51:fc:00:3c:a0:2a:f3
   register: created_droplet
 

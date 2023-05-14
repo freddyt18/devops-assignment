@@ -25,10 +25,10 @@
     cmd: git commit -m "update"
 
 - name: Push changes
-  ansible.builtin.command:
+  ansible.builtin.shell:
     chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
     cmd: git push origin master
-    environment:
-      GIT_ASKPASS: /bin/echo
-      GIT_USERNAME: "{{ github_token }}"
-      GIT_PASSWORD: "{{ github_token }}"
+  environment:
+    GIT_ASKPASS: /bin/echo
+    GIT_USERNAME: "{{ github_token }}"
+    GIT_PASSWORD: "{{ github_token }}"

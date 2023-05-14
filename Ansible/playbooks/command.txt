@@ -1,0 +1,5 @@
+01
+ansible-playbook playbooks/01_tools.yml 
+
+02
+ansible-playbook playbook.yml -e "digital_ocean_token="

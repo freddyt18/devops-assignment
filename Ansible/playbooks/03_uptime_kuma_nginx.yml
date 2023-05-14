@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ host }}"
+- hosts: droplet
 - tasks:
   - name: Create Nginx configuration file
     copy:

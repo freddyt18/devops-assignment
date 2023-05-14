@@ -55,7 +55,7 @@ pipeline {
                 sh """
                     cd ${WORKSPACE_DIR} && \\
                     cd ${PLAYBOOK_DIR} && \\
-                    ansible-playbook playbooks/03_uptime_kuma_nginx.yml -e "host=droplet"
+                    ansible-playbook playbooks/03_uptime_kuma_nginx.yml
                 """
             }
         }

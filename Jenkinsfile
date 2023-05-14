@@ -3,7 +3,11 @@ pipeline {
     stages {
         stage('Installing Tools'){
             steps {
-                sh 'ls ~/personal/devops-assignment/'
+                sh '''
+                    cd ~/personal/devops-assignment/ && \
+                        cd Ansible && \
+                        ansible-playbook playbooks/tools.yml
+                '''
             }
         }
     }

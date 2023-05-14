@@ -46,7 +46,7 @@ pipeline {
 
         stage('Install Docker, Docker Compose, and Uptime Kuma on the Droplet and Configure Nginx') {
             steps {
-                sh '''
+                sh """
 
                     rm -rf ~/tmp_ && \\
                     mkdir ~/tmp_ && \\
@@ -58,10 +58,10 @@ pipeline {
                     ansible-playbook playbooks/01_tools.yml -e "host=droplet" && \\
 
                     cd ~/tmp_/devops-assignment/Ansible && \\
-                    ansible-playbook playbooks/03_uptime_kuma_nginx.yml && \\
+                    ansible-playbook playbooks/03_uptime_kuma_nginx.yml -e "devops_main=${devops_main} devops_ip=${devops_ip}" && \\
 
                     rm -rf ~/tmp_
-                '''
+                """
             }
         }
     }

@@ -1,5 +1,14 @@
 ---
 # tasks file for github
+- name: Configure .netrc file
+  ansible.builtin.copy:
+    content: |
+      machine github.com
+      login {{ github_username }}
+      password {{ github_token }}
+    dest: ~/.netrc
+    mode: '0600'
+
 - name: Set git user name
   ansible.builtin.command:
     chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
@@ -33,7 +42,4 @@
   ansible.builtin.command:
     chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
     cmd: git push origin master
-  environment:
-    GIT_ASKPASS: /bin/echo
-    GIT_USERNAME: "{{ github_token }}"
-    GIT_PASSWORD: "{{ github_token }}"
+

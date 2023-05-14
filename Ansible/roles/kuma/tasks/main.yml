@@ -1,16 +1,8 @@
 ---
 # tasks file for kuma
-- name: Pull Uptime Kuma Docker image
-  docker_image:
-    name: louislam/uptime-kuma
-    source: pull
+- name: Run Uptime Kuma Docker container
+  shell: docker run -d --name uptime-kuma -p 3001:3001 louislam/uptime-kuma
 
-- name: Run Uptime Kuma container
-  docker_container:
-    name: uptime-kuma
-    image: louislam/uptime-kuma
-    published_ports:
-      - "3000:3000"
 
 
 

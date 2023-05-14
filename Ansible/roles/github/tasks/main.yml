@@ -1,2 +1,11 @@
 ---
 # tasks file for github
+- name: Add, commit, and push changes
+  community.general.git:
+    repo: /var/lib/jenkins/workspace/DevOps/jenkins_infra
+    add: .
+    commit: true
+    msg: "update"
+    push: true
+    push_option: origin master
+    key_file: "{{ github_token }}"

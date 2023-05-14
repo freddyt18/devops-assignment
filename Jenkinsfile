@@ -26,6 +26,7 @@ pipeline {
                 """
 
                 sh '''
+                    rm -rf ~/tmp_droplet && \\
                     cd ~ && \\
                     mkdir tmp_droplet && \\
                     cd tmp_droplet && \\

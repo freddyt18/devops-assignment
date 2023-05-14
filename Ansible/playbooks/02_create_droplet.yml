@@ -2,6 +2,5 @@
 - hosts: localhost
   roles:
     - droplet
-    - github
 
   

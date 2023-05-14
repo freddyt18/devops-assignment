@@ -1,2 +1,7 @@
 ---
 # tasks file for kubectl
+- name: Install kubectl
+  apt:
+    name: kubectl
+    state: present
+  when: kubectl_already_installed == "no"

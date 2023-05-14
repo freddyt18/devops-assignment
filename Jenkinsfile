@@ -31,7 +31,7 @@ pipeline {
 
                 sh '''
                     git checkout master && \\
-                    git pull origin master && \\
+                    git pull && \\
                     git add . && \\
                     git commit -m "Added the droplet IP" && \\
                     git push origin master

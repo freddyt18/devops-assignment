@@ -3,11 +3,12 @@
 - name: Check if Uptime Kuma is installed
   shell: docker ps --filter "name=uptime-kuma" --format "{{.Names}}"
   register: uptime_kuma_check
+  failed_when: false
   ignore_errors: true
 
 - name: Register Uptime Kuma installation status
   set_fact:
-    uptime_kuma_already_installed: "{{ 'yes' if 'uptime-kuma' in uptime_kuma_check.stdout else 'no' }}"
+    uptime_kuma_already_installed: "{{ 'yes' if uptime_kuma_check.rc == 0 and uptime_kuma_check.stdout is defined and 'uptime-kuma' in uptime_kuma_check.stdout else 'no' }}"
 
 - name: Install Uptime Kuma using Docker
   docker_container:

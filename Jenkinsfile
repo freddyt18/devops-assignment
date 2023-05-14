@@ -1,5 +1,5 @@
 pipeline {
-    agent any // Test
+    agent any
     environment {
         WORKSPACE_DIR = '/var/lib/jenkins/workspace/DevOps/jenkins_infra/devops-assignment'
         PLAYBOOK_DIR = 'Ansible'

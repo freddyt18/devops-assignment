@@ -49,19 +49,13 @@ pipeline {
                 sh '''
                     mkdir ~/tmp_ && \\
                     cd ~/tmp_ && \\
+
                     git clone https://github.com/freddyt18/devops-assignment.git && \\
-                    cd devops-assignment/Ansible
-                '''
+                    cd devops-assignment/Ansible && \\
 
-                sh '''
-                    ansible-playbook playbooks/01_tools.yml -e "host=droplet"
-                '''
+                    ansible-playbook playbooks/01_tools.yml -e "host=droplet" && \\
+                    ansible-playbook playbooks/03_uptime_kuma_nginx.yml && \\
 
-                sh '''
-                    ansible-playbook playbooks/03_uptime_kuma_nginx.yml
-                '''
-
-                sh '''
                     rm -rf ~/devops-assignment
                 '''
             }

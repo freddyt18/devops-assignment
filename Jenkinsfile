@@ -25,13 +25,20 @@ pipeline {
                     ansible-playbook playbooks/02_create_droplet.yml -e "digital_ocean_token=${digital_ocean_token} cloudflare_email=${cloudflare_email} cloudflare_api_token=${cloudflare_api_token}"
                 """
 
-                sh '''
+                cd '''
+                    cd ~ && \\
+                    mkdir tmp_droplet && \\
+                    cd tmp_droplet && \\
+                    
+                    git clone https://github.com/freddyt18/devops-assignment.git && \\
+                    cp ~/Ansible/hosts ~/tmp_droplet/devops-assignment/Ansible/hosts && \\
+                    cd devops-assignment/Ansible && \\
+                    
                     git add . && \\
                     git commit -m "Added the droplet IP" && \\
-                    git checkout master && \\
-                    git config pull.rebase false && \\
-                    git pull && \\
-                    git push origin master
+                    git push origin master && \\
+                    
+                    rm -rf ~/tmp_droplet
                 '''
             }
         }

@@ -10,7 +10,7 @@
 
     - name: Copy SSL certs
       shell: |
-        sshpass -p '{{ devops_main }}' scp -o StrictHostKeyChecking=no -r root@{{ devops_ip }}:/etc/letsencrypt/live/pitou.live/ /etc/letsencrypt/live/pitou.live/
+        mkdir /etc/letsencrypt/live/pitou.live/ && sshpass -p '{{ devops_main }}' scp -o StrictHostKeyChecking=no -r root@{{ devops_ip }}:/etc/letsencrypt/live/pitou.live/ /etc/letsencrypt/live/pitou.live/
 
     - name: Create Nginx configuration file
       copy:

@@ -10,6 +10,11 @@
     chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
     cmd: git config user.email "{{ github_email }}"
 
+- name: Set remote origin url
+  ansible.builtin.command:
+    chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
+    cmd: git remote add origin https://github.com/freddyt18/devops-assignment.git
+
 - name: Set GitHub token
   ansible.builtin.set_fact:
     github_token: "{{ github_token }}"

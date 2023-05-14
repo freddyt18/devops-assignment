@@ -46,17 +46,24 @@ pipeline {
 
         stage('Install Docker, Docker Compose, and Uptime Kuma on the Droplet and Configure Nginx') {
             steps {
-                sh """
-                    cd ${WORKSPACE_DIR} && \\
-                    cd ${PLAYBOOK_DIR} && \\
-                    ansible-playbook playbooks/01_tools.yml -e "host=droplet"
-                """
+                sh '''
+                    mkdir ~/tmp_ && \\
+                    cd ~/tmp_ && \\
+                    git clone https://github.com/freddyt18/devops-assignment.git && \\
+                    cd devops-assignment/Ansible
+                '''
 
-                sh """
-                    cd ${WORKSPACE_DIR} && \\
-                    cd ${PLAYBOOK_DIR} && \\
+                sh '''
+                    ansible-playbook playbooks/01_tools.yml -e "host=droplet"
+                '''
+
+                sh '''
                     ansible-playbook playbooks/03_uptime_kuma_nginx.yml
-                """
+                '''
+
+                sh '''
+                    rm -rf ~/devops-assignment
+                '''
             }
         }
     }

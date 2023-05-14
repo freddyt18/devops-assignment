@@ -5,10 +5,30 @@
   register: kubectl_installed
   ignore_errors: true
 
+- name: Update package index
+  apt:
+    update_cache: yes
+
+- name: Install required packages
+  apt:
+    name:
+      - apt-transport-https
+      - gnupg
+    state: present
+
+- name: Add Kubernetes repository apt key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Add Kubernetes repository
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+
 - name: Install kubectl
   apt:
     name: kubectl
     state: present
-    update_cache: yes
   when: kubectl_installed.rc != 0
 

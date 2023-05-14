@@ -1,14 +1,9 @@
 ---
 # tasks file for kuma
-# tasks file for kuma
 - name: Check if Uptime Kuma is installed
   community.docker.docker_container_info:
     name: uptime-kuma
   register: uptime_kuma_info
-
-- name: Register Uptime Kuma installation status
-  set_fact:
-    uptime_kuma_already_installed: "{{ 'yes' if uptime_kuma_info.exists else 'no' }}"
 
 - name: Install Uptime Kuma using Docker
   docker_container:
@@ -17,7 +12,8 @@
     state: started
     ports:
       - "3001:3001"
-  when: uptime_kuma_already_installed == "no"
+  when: not uptime_kuma_info.exists
+
 
 
 

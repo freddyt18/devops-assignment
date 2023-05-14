@@ -44,7 +44,7 @@ pipeline {
             }
         }
 
-        stage('Install Docker and Docker Compose on the Droplet') {
+        stage('Install Docker, Docker Compose, and Uptime Kuma on the Droplet and Configure Nginx') {
             steps {
                 sh """
                     cd ${WORKSPACE_DIR} && \\

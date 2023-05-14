@@ -4,7 +4,7 @@ pipeline {
     }
     environment {
         WORKSPACE_DIR = '/var/lib/jenkins/workspace/DevOps/jenkins_infra/'
-        PLAYBOOK_DIR = 'Ansible'
+        PLAYBOOK_DIR = 'Ansible/playbooks'
     }
     stages {
         stage('Installing Tools on main server') {
@@ -12,7 +12,7 @@ pipeline {
                 sh """
                     cd ${WORKSPACE_DIR} && \\
                     cd ${PLAYBOOK_DIR} && \\
-                    ansible-playbook playbooks/01_tools.yml
+                    ansible-playbook 01_tools.yml
                 """
             }
         }

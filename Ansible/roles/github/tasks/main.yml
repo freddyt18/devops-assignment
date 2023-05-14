@@ -38,11 +38,6 @@
     chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
     cmd: git checkout master
 
-- name: Update branch
-  ansible.builtin.command:
-    chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
-    cmd: git pull origin master
-
 - name: Push changes
   ansible.builtin.command:
     chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra

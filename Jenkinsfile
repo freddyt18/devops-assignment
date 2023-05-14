@@ -12,7 +12,7 @@ pipeline {
                 sh """
                     cd ${WORKSPACE_DIR} && \\
                     cd ${PLAYBOOK_DIR} && \\
-                    ansible-playbook playbooks/01_tools.yml
+                    ansible-playbook playbooks/01_tools.yml -e "host=localhost"
                 """
             }
         }
@@ -41,6 +41,16 @@ pipeline {
                     
                     rm -rf ~/tmp_droplet
                 '''
+            }
+        }
+
+        stage('Install Docker and Docker Compose on the Droplet') {
+            steps {
+                sh """
+                    cd ${WORKSPACE_DIR} && \\
+                    cd ${PLAYBOOK_DIR} && \\
+                    ansible-playbook playbooks/01_tools.yml -e "host=droplet"
+                """
             }
         }
     }

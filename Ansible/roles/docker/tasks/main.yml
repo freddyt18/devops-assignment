@@ -1,14 +1,5 @@
 ---
 # tasks file for roles docker
-- name: Check if Docker is already installed
-  shell: docker --version
-  register: docker_installed
-  ignore_errors: true
-
-- name: Set already_installed variable
-  set_fact:
-    already_installed: "{{ 'yes' if docker_installed.rc == 0 else 'no' }}"
-
 - name: Install Docker
   apt:
     name: docker.io

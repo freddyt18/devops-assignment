@@ -1,2 +1,10 @@
 ---
 # tasks file for droplet
+- name: Create DigitalOcean droplet
+  community.digitalocean.digital_ocean_droplet:
+    state: present
+    name: my-droplet
+    oauth_token: "{{ digital_ocean_token }}"
+    size: s-2vcpu-4gb
+    region: nyc1
+    image: ubuntu-20-04-x64

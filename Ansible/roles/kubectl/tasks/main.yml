@@ -1,7 +1,16 @@
 ---
 # tasks file for kubectl
+- name: Check if kubectl is installed
+  shell: command -v kubectl
+  register: kubectl_installed
+  ignore_errors: true
+
+- name: Set kubectl_already_installed variable
+  set_fact:
+    kubectl_already_installed: "{{ 'yes' if kubectl_installed.rc == 0 else 'no' }}"
+
 - name: Install kubectl
-  apt:
-    name: kubectl
+  community.kubernetes.kubectl:
     state: present
   when: kubectl_already_installed == "no"
+

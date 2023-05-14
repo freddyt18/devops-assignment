@@ -30,20 +30,13 @@ pipeline {
                 '''
 
                 sh '''
-                    git branch && \\
-                    ls -al && \\
                     git checkout master && \\
                     git config pull.rebase false && \\
-                    git pull
+                    git pull && \\
+                    git add . && \\
+                    git commit -m "Added the droplet IP" && \\
+                    git push origin master
                 '''
-
-                // sh '''
-                    // git checkout master && \\
-                    // git pull && \\
-                    // git add . && \\
-                    // git commit -m "Added the droplet IP" && \\
-                    // git push origin master
-                // '''
             }
         }
     }

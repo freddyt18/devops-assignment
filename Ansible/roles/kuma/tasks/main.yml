@@ -8,7 +8,7 @@
 
 - name: Register Uptime Kuma installation status
   set_fact:
-    uptime_kuma_already_installed: "{{ 'yes' if uptime_kuma_check.rc == 0 and uptime_kuma_check.stdout is defined and 'uptime-kuma' in uptime_kuma_check.stdout else 'no' }}"
+    uptime_kuma_already_installed: "{{ 'yes' if uptime_kuma_check.rc == 0 else 'no' }}"
 
 - name: Install Uptime Kuma using Docker
   docker_container:
@@ -18,4 +18,5 @@
     ports:
       - "3001:3001"
   when: uptime_kuma_already_installed == "no"
+
 

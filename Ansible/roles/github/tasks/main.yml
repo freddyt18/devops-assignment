@@ -5,15 +5,14 @@
     github_token: "{{ github_token }}"
 
 - name: Add changes
-  ansible.builtin.git:
-    repo: /var/lib/jenkins/workspace/DevOps/jenkins_infra
-    add: .
+  ansible.builtin.command:
+    chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
+    cmd: git add .
 
 - name: Commit changes
-  ansible.builtin.git:
-    repo: /var/lib/jenkins/workspace/DevOps/jenkins_infra
-    commit: true
-    msg: "update"
+  ansible.builtin.command:
+    chdir: /var/lib/jenkins/workspace/DevOps/jenkins_infra
+    cmd: git commit -m "update"
 
 - name: Push changes
   ansible.builtin.command:
@@ -23,4 +22,3 @@
       GIT_ASKPASS: /bin/echo
       GIT_USERNAME: "{{ github_token }}"
       GIT_PASSWORD: "{{ github_token }}"
-

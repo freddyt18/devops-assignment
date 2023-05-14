@@ -1,14 +1,23 @@
 ---
+- name: Check if Docker is installed
+  shell: command -v docker
+  register: docker_installed
+  ignore_errors: true
+
 - name: Install Docker
   apt:
     name: docker.io
     state: present
     update_cache: yes
-  when: docker_already_installed == "no"
+  when: docker_installed.rc != 0
+
+- name: Check Docker service name
+  shell: systemctl list-unit-files | grep -o -m 1 -E 'docker(\.io|\.service|)'
+  register: docker_service_name
 
 - name: Start Docker service
   service:
-    name: docker
+    name: "{{ docker_service_name.stdout }}"
     state: started
 
 - name: Add user to Docker group

@@ -26,11 +26,11 @@ pipeline {
                 """
 
                 sh '''
+                    git add . && \\
+                    git commit -m "Added the droplet IP" && \\
                     git checkout master && \\
                     git config pull.rebase false && \\
                     git pull && \\
-                    git add . && \\
-                    git commit -m "Added the droplet IP" && \\
                     git push origin master
                 '''
             }

@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any // Test
     environment {
         WORKSPACE_DIR = '~/personal/devops-assignment'
         PLAYBOOK_DIR = 'Ansible'

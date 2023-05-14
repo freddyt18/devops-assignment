@@ -24,4 +24,4 @@
     type: A
     value: "{{ created_droplet_public_ip }}"
     account_email: "{{ cloudflare_email }}"
-    account_api_token: "{{ cloudflare_api_token }}"
+    api_token: "{{ cloudflare_api_token }}"

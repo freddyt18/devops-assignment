@@ -25,8 +25,8 @@
             listen 443 ssl;
             server_name uptime.pitou.live;
 
-            ssl_certificate ~/pitou.live/fullchain.pem;
-            ssl_certificate_key ~/pitou.live/privkey.pem;
+            ssl_certificate ~/pitou.live/pitou.live/fullchain.pem;
+            ssl_certificate_key ~/pitou.live/pitou.live/privkey.pem;
 
             location / {
               proxy_pass http://localhost:3001;

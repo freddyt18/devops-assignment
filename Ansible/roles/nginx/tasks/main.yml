@@ -10,8 +10,9 @@
     nginx_already_installed: "{{ 'yes' if nginx_installed.rc == 0 else 'no' }}"
 
 - name: Install Nginx
-  community.general.package:
+  apt:
     name: nginx
     state: present
   when: nginx_already_installed == "no"
+
 

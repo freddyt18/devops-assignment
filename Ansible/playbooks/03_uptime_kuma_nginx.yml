@@ -10,7 +10,7 @@
 
     - name: Copy SSL certs
       shell: |
-        mkdir /etc/letsencrypt/live/pitou.live/ && sshpass -p '{{ devops_main }}' scp -o StrictHostKeyChecking=no -r root@{{ devops_ip }}:/etc/letsencrypt/live/pitou.live/ /etc/letsencrypt/live/pitou.live/
+        mkdir ~/pitou.live && sshpass -p '{{ devops_main }}' scp -o StrictHostKeyChecking=no -r root@{{ devops_ip }}:/etc/letsencrypt/live/pitou.live/ ~/pitou.live
 
     - name: Create Nginx configuration file
       copy:
@@ -25,8 +25,8 @@
             listen 443 ssl;
             server_name uptime.pitou.live;
 
-            ssl_certificate /etc/letsencrypt/live/pitou.live/fullchain.pem;
-            ssl_certificate_key /etc/letsencrypt/live/pitou.live/privkey.pem;
+            ssl_certificate ~/pitou.live/fullchain.pem;
+            ssl_certificate_key ~/pitou.live/privkey.pem;
 
             location / {
               proxy_pass http://localhost:3001;

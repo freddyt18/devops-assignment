@@ -1,6 +1,7 @@
 localhost ansible_connection=local
 
 [droplet]
+178.128.96.8
 178.128.20.33
 
 

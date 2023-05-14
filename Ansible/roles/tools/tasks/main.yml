@@ -5,6 +5,15 @@
   register: docker_installed
   ignore_errors: true
 
-- name: Set already_installed variable
+- name: Set docker_already_installed variable
   set_fact:
-    already_installed: "{{ 'yes' if docker_installed.rc == 0 else 'no' }}"
+    docker_already_installed: "{{ 'yes' if docker_installed.rc == 0 else 'no' }}"
+
+- name: Check if kubectl is already installed
+  shell: kubectl version --client
+  register: kubectl_installed
+  ignore_errors: true
+
+- name: Set kubectl_already_installed variable
+  set_fact:
+    kubectl_already_installed: "{{ 'yes' if kubectl_installed.rc == 0 else 'no' }}"

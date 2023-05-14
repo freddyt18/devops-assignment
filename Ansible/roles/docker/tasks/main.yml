@@ -1,11 +1,10 @@
 ---
-# tasks file for roles docker
 - name: Install Docker
   apt:
     name: docker.io
     state: present
     update_cache: yes
-  when: already_installed == "no"
+  when: docker_already_installed == "no"
 
 - name: Start Docker service
   service:
@@ -17,5 +16,3 @@
     name: "{{ ansible_user }}"
     groups: docker
     append: yes
-
-

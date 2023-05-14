@@ -8,6 +8,7 @@
 - name: Update package index
   apt:
     update_cache: yes
+  become: true
 
 - name: Install required packages
   apt:
@@ -15,20 +16,25 @@
       - apt-transport-https
       - gnupg
     state: present
+  become: true
 
 - name: Add Kubernetes repository apt key
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     state: present
+  become: true
 
 - name: Add Kubernetes repository
   apt_repository:
     repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
     state: present
+  become: true
 
 - name: Install kubectl
   apt:
     name: kubectl
     state: present
   when: kubectl_installed.rc != 0
+  become: true
+
 

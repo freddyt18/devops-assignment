@@ -12,7 +12,7 @@
           - name: "worker-pool-1"
             size: "s-1vcpu-2gb"
             count: 2
-      register: do_k8s_cluster
+        register: do_k8s_cluster
 
     - name: Save kubeconfig to local .kube folder
       local_action:

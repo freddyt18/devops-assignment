@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Create a DigitalOcean Kubernetes cluster
+      community.digitalocean.digital_ocean_kubernetes:
+        state: present
+        oauth_token: "{{ digital_ocean_token }}"
+        name: "devops-assignment-kuberenets-cluster"
+        region: "sgp1"
+        version: "1.21.5-do.0"
+        node_pools:
+          - name: "worker-pool-1"
+            size: "s-1vcpu-2gb"
+            count: 2
+      register: do_k8s_cluster
+
+    - name: Save kubeconfig to local .kube folder
+      local_action:
+        module: copy
+        content: "{{ do_k8s_cluster.data.kubeconfig }}"
+        dest: "~/.kube/config"
+
+    - name: Run a test get nodes command 
+      command: kubectl get nodes
+      register: kubectl_get_nodes
+    
+    - name: Print the output of the kubectl get nodes command
+      debug:
+        msg: "{{ kubectl_get_nodes.stdout }}"
+        

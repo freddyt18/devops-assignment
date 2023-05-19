@@ -15,7 +15,7 @@
             max-nodes: 2
         return_kubeconfig: true
         wait_timeout: 600
-        register: do_k8s_cluster
+      register: do_k8s_cluster
 
     - name: Save kubeconfig to local .kube folder
       local_action:

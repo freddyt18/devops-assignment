@@ -17,6 +17,10 @@
         wait_timeout: 600
       register: do_k8s_cluster
 
+    - name: Show the kubeconfig for the cluster we just created
+      debug:
+      msg: "{{ my_cluster.data }}"
+
     - name: Save kubeconfig to local .kube folder
       local_action:
         module: copy

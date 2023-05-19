@@ -7,7 +7,7 @@
         oauth_token: "{{ digital_ocean_token }}"
         name: "devops-assignment-kuberenets-cluster"
         region: "sgp1"
-        version: "1.21.5-do.0"
+        version: "latest"
         node_pools:
           - name: "worker-pool-1"
             size: "s-1vcpu-2gb"

@@ -68,7 +68,17 @@ pipeline {
         stage('Setting up Kubernetes cluster with the created Droplet'){
             steps {
                 sh """
-                    ansible-playbook playbooks/04_cluster.yml -e "digital_ocean_token=${digital_ocean_token}" -vvv
+                    rm -rf ~/tmp_ && \\
+                    mkdir ~/tmp_ && \\
+                    cd ~/tmp_ && \\
+
+                    git clone https://github.com/freddyt18/devops-assignment.git && \\
+                    cd devops-assignment/Ansible && \\
+
+                    ansible-playbook playbooks/04_cluster.yml -e "digital_ocean_token=${digital_ocean_token}" -vvv && \\
+
+                    rm -rf ~/tmp_
+                    
                 """
             }
         }

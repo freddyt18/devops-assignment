@@ -19,7 +19,7 @@
 
     - name: Connect to the Kubernetes cluster using doctl
       shell: |
-        doctl auth init -t {{ digital_ocean_token }} && doctl kubernetes cluster kubeconfig save {{ do_k8s_cluster.data.id }}
+        rm -rf ~/.kube && doctl auth init -t {{ digital_ocean_token }} && doctl kubernetes cluster kubeconfig save {{ do_k8s_cluster.data.id }}
       when: do_k8s_cluster.changed
 
     - name: Testing the connection to the Kubernetes cluster

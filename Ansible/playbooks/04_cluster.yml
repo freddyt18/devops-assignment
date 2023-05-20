@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: droplet
   tasks:
     - name: Create a DigitalOcean Kubernetes cluster
       community.digitalocean.digital_ocean_kubernetes:

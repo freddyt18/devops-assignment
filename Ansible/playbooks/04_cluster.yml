@@ -17,21 +17,13 @@
         wait_timeout: 600
       register: do_k8s_cluster
 
-    - name: Show the kubeconfig for the cluster we just created
-      debug:
-        msg: "{{ do_k8s_cluster.data }}"
+    - name: Connect to the Kubernetes cluster using doctl
+      shell: |
+        doctl auth init -t {{ digital_ocean_token }} && doctl kubernetes cluster kubeconfig save {{ do_k8s_cluster.data.id }}
+      when: do_k8s_cluster.changed
 
-    - name: Save kubeconfig to local .kube folder
-      local_action:
-        module: copy
-        content: "{{ do_k8s_cluster.data.kubeconfig }}"
-        dest: "~/.kube/config"
-
-    - name: Run a test get nodes command 
-      command: kubectl get nodes
-      register: kubectl_get_nodes
-    
-    - name: Print the output of the kubectl get nodes command
-      debug:
-        msg: "{{ kubectl_get_nodes.stdout }}"
+    - name: Testing the connection to the Kubernetes cluster
+      shell: |
+        kubectl get nodes
+      when: do_k8s_cluster.changed
         

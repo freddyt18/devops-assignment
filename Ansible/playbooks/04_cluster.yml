@@ -24,7 +24,7 @@
 
     - name: Connect to the Kubernetes cluster using doctl
       shell: |
-        whoami && rm -rf ~/.kube && mkdir ~/.kube && snap connect doctl:kube-config && doctl auth init -t {{ digital_ocean_token }} && doctl kubernetes cluster kubeconfig save {{ do_k8s_cluster.data.id }}
+        whoami && rm -rf ~/.kube && mkdir ~/.kube && mkdir ~/.config && snap connect doctl:kube-config && doctl auth init -t {{ digital_ocean_token }} && doctl kubernetes cluster kubeconfig save {{ do_k8s_cluster.data.id }}
       become_user: "root"
       when: do_k8s_cluster.changed
 

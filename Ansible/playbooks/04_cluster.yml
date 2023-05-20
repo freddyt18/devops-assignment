@@ -19,7 +19,7 @@
             count: 1
             max-nodes: 1
         return_kubeconfig: yes
-        wait_timeout: 600
+        wait_timeout: 1200
       register: do_k8s_cluster
 
     - name: Connect to the Kubernetes cluster using doctl

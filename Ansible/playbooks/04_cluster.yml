@@ -1,6 +1,11 @@
 ---
 - hosts: droplet
   tasks:
+    - name: Installing doctl with snap
+      shell: |
+        snap install doctl
+      become: yes
+      
     - name: Create a DigitalOcean Kubernetes cluster
       community.digitalocean.digital_ocean_kubernetes:
         state: present

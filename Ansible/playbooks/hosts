@@ -2,7 +2,7 @@ localhost ansible_connection=local
 
 [droplet]
 # BEGIN ANSIBLE MANAGED BLOCK
-157.245.53.52
+206.189.85.163
 # END ANSIBLE MANAGED BLOCK
 
 

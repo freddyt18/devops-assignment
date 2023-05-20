@@ -16,8 +16,8 @@
         node_pools:
           - name: "worker-pool-1"
             size: "s-1vcpu-2gb"
-            count: 2
-            max-nodes: 2
+            count: 1
+            max-nodes: 1
         return_kubeconfig: yes
         wait_timeout: 600
       register: do_k8s_cluster

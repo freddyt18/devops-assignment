@@ -22,7 +22,7 @@ pipeline {
                 sh """
                     cd ${WORKSPACE_DIR} && \\
                     cd ${PLAYBOOK_DIR} && \\
-                    ansible-playbook playbooks/02_create_droplet.yml -e "digital_ocean_token=${digital_ocean_token} cloudflare_email=${cloudflare_email} cloudflare_api_token=${cloudflare_api_token}" -vvv
+                    ansible-playbook playbooks/02_create_droplet.yml -e "digital_ocean_token=${digital_ocean_token} cloudflare_email=${cloudflare_email} cloudflare_api_token=${cloudflare_api_token} uptime_domain=${uptime_domain}" -vvv
                 """
 
                 sh '''
@@ -55,7 +55,7 @@ pipeline {
                     git clone https://github.com/freddyt18/devops-assignment.git && \\
                     cd devops-assignment/Ansible && \\
 
-                    ansible-playbook playbooks/01_tools.yml -e "host=droplet uptime_domain=${uptime_domain}" -vvv && \\
+                    ansible-playbook playbooks/01_tools.yml -e "host=droplet" -vvv && \\
 
                     cd ~/tmp_/devops-assignment/Ansible && \\
                     ansible-playbook playbooks/03_uptime_kuma_nginx.yml -e "devops_main=${devops_main} devops_ip=${devops_ip} uptime_domain=${uptime_domain}" && \\

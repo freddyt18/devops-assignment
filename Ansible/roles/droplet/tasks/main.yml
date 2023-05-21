@@ -35,7 +35,8 @@
 - name: Point Cloudflare domain to created droplet
   community.general.cloudflare_dns:
     zone: pitou.live
-    record: uptime
+    # Split the domain by . and get all the parts before pitou.live
+    record: "{{ uptime_kuma.split('.')[:-2] | join('.') }}"
     type: A
     value: "{{ created_droplet_public_ip }}"
     account_email: "{{ cloudflare_email }}"

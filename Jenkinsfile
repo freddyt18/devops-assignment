@@ -58,7 +58,7 @@ pipeline {
                     ansible-playbook playbooks/01_tools.yml -e "host=droplet" -vvv && \\
 
                     cd ~/tmp_/devops-assignment/Ansible && \\
-                    ansible-playbook playbooks/03_uptime_kuma_nginx.yml -e "devops_main=${devops_main} devops_ip=${devops_ip}" && \\
+                    ansible-playbook playbooks/03_uptime_kuma_nginx.yml -e "devops_main=${devops_main} devops_ip=${devops_ip} uptime_domain=${uptime_domain}" && \\
 
                     rm -rf ~/tmp_
                 """

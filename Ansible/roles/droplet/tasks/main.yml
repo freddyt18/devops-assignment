@@ -36,7 +36,7 @@
   community.general.cloudflare_dns:
     zone: pitou.live
     # Split the domain by . and get all the parts before pitou.live
-    record: "{{ uptime_kuma.split('.')[:-2] | join('.') }}"
+    record: "{{ uptime_domain.split('.')[:-2] | join('.') }}"
     type: A
     value: "{{ created_droplet_public_ip }}"
     account_email: "{{ cloudflare_email }}"

@@ -1,3 +1,4 @@
+/* groovylint-disable LineLength */
 pipeline {
     agent {
         label 'main'

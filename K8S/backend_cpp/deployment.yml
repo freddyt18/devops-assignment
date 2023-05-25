@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-cpp
+  name: portfolio
 spec:
   replicas: 3
   minReadySeconds: 15
   selector:
     matchLabels:
-      app: backend-cpp
+      app: portfolio
   template:
     metadata:
       labels:
-        app: backend-cpp
+        app: portfolio
     spec:
       containers:
-        - name: backend-cpp
-          image: freddyt18/backend_cpp:latest
+        - name: portfolio
+          image: freddyt18/portfolio:latest
           imagePullPolicy: Always
           # resources: #default
           #   requests:
@@ -26,12 +26,3 @@ spec:
           #     cpu: "500m"
           ports:
             - containerPort: 18080
-          volumeMounts:
-            - mountPath: /vcpkg
-              name: vcpkg-tool
-          # command: ['/bin/bash', '-c', 'whoami && ls / && ls /vcpkg/ && cd /app && ls && chmod +x linux-deploy.sh && ./linux-deploy.sh']
-          command: ['/bin/sh', '-c', 'ls /vcpkg']
-      volumes:
-        - name: vcpkg-tool
-          hostPath:
-            path: /root/tools/vcpkg/

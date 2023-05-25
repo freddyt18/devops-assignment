@@ -14,7 +14,7 @@ spec:
   - host: portfolio.pitou.live
     http:
       paths:
-      - path: /
+      - path: /me.html
         pathType: Prefix
         backend:
           service:

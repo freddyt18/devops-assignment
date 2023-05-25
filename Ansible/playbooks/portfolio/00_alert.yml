@@ -5,4 +5,7 @@
         token: "{{ telegram_token }}"
         api_args:
           chat_id: 642027926
-          msg: "The backend_cpp deployment is started."
+          text: "The backend_cpp deployment is started."
+          parse_mode: "markdown"
+          disable_web_page_preview: true
+          disable_notification: false

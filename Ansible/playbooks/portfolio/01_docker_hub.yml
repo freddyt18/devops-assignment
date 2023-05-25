@@ -3,4 +3,4 @@
   become: yes
   tasks: 
     - name: Building portfolio image and pushing to dockerhub
-      shell: sudo docker build -t portfolio:latest . && sudo docker tag portfolio:latest freddyt18/portfolio:latest && sudo docker push freddyt18/portfolio:latest
+      shell: cd /var/lib/jenkins/workspace/DevOps/portfolio && sudo docker build -t portfolio:latest . && sudo docker tag portfolio:latest freddyt18/portfolio:latest && sudo docker push freddyt18/portfolio:latest

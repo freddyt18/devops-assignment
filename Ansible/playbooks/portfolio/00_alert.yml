@@ -1,11 +1,12 @@
 - hosts: localhost
   tasks:
     - name: Alert developer on Telegram
-      telegram:
+      community.general.telegram:
         token: "{{ telegram_token }}"
+        api_method: sendMessage
         api_args:
           chat_id: 642027926
           text: "The backend_cpp deployment is started."
-          parse_mode: "markdown"
+          parse_mode: "html"
           disable_web_page_preview: true
           disable_notification: false

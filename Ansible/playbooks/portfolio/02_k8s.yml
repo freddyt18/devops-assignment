@@ -4,19 +4,19 @@
     - name: Deploying the application
       community.kubernetes.k8s:
         state: present
-        src: ~/personal/devops-assignment/K8s/porfolio/deployment.yml
+        src: ~/personal/devops-assignment/K8S/porfolio/deployment.yml
   
     - name: Deploying the service
       community.kubernetes.k8s:
         state: present
-        src: ~/personal/devops-assignment/K8s/porfolio/service.yml
+        src: ~/personal/devops-assignment/K8S/porfolio/service.yml
   
     - name: Deploying the issuer
       community.kubernetes.k8s:
         state: present
-        src: ~/personal/devops-assignment/K8s/porfolio/issuer.yml
+        src: ~/personal/devops-assignment/K8S/porfolio/issuer.yml
   
     - name: Deploying the ingress controller
       community.kubernetes.k8s:
         state: present
-        src: ~/personal/devops-assignment/K8s/porfolio/ingress.yml
+        src: ~/personal/devops-assignment/K8S/porfolio/ingress.yml

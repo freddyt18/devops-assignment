@@ -1,4 +1,5 @@
 - hosts: localhost
+  become: yes
   tasks: 
     - name: Deploying the application
       community.kubernetes.k8s:

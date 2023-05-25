@@ -29,7 +29,7 @@ spec:
           volumeMounts:
             - mountPath: /vcpkg
               name: vcpkg-tool
-          command: ["/bin/sh cd ~ && ls -al"]
+          command: ['/bin/sh -c "cd ~ && ls -al"']
       volumes:
         - name: vcpkg-tool
           hostPath:

@@ -28,5 +28,5 @@ spec:
             - containerPort: 18080
           volumeMounts:
             - name: vcpkg-tool
-              mountPath: /tools/vcpkg
+              mountPath: /vcpkg
           command: ["/bin/bash", "/app/linux-deploy.sh"]

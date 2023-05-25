@@ -13,11 +13,15 @@ spec:
         app: backend-cpp
     spec:
       containers:
-      - name: backend-cpp
-        image: freddyt18/backend_cpp:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 18080
+        - name: backend-cpp
+          image: freddyt18/backend_cpp:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 18080
+          volumeMounts:
+            - name: vcpkg-tool
+              mountPath: /tools/vcpkg
+          command: ["/bin/bash", "/app/linux-deploy.sh"]

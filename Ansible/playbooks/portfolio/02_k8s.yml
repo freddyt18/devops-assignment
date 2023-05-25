@@ -1,6 +1,6 @@
 - hosts: localhost
   become: yes
-  tasks: 
+  tasks: # Applying k8s manifests
     - name: Deploying the application
       community.kubernetes.k8s:
         state: present

@@ -33,5 +33,4 @@ spec:
       volumes:
         - name: vcpkg-tool
           hostPath:
-            path: /root/tools/vcpkg
-            type: Directory
+            path: /root/tools/vcpkg/

@@ -17,7 +17,7 @@ spec:
       containers:
         - name: portfolio
           image: freddyt18/portfolio:latest
-          imagePullPolicy: Always
+          imagePullPolicy: "Always"
           # resources: #default
           #   requests:
           #     memory: "64Mi"

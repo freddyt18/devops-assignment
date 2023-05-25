@@ -5,14 +5,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: backend_cpp
+      app: backend-cpp
   template:
     metadata:
       labels:
-        app: backend_cpp
+        app: backend-cpp
     spec:
       containers:
-      - name: backend_cpp
+      - name: backend-cpp
         image: freddyt18/backend_cpp:latest
         resources:
           limits:

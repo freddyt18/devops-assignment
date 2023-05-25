@@ -1,7 +1,7 @@
-hosts: localhost
-tasks:
-  - name: Alert developer on Telegram
-    telegram:
-      token: "{{ telegram_token }}"
-      chat_id: "642027926"
-      msg: "The backend_cpp deployment is started."
+- hosts: localhost
+  tasks:
+    - name: Alert developer on Telegram
+      telegram:
+        token: "{{ telegram_token }}"
+        chat_id: "642027926"
+        msg: "The backend_cpp deployment is started."

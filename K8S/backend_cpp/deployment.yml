@@ -29,7 +29,7 @@ spec:
           volumeMounts:
             - name: vcpkg-tool
               mountPath: /vcpkg
-          command: ["/bin/bash", "/app/linux-deploy.sh"]
+          command: ["/bin/bash", "./app/linux-deploy.sh"]
       volumes:
         - name: vcpkg-tool
           hostPath:

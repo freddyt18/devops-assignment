@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: backend-cpp
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: backend-cpp

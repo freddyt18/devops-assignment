@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  become: yes
+  tasks: 
+    - name: Build Docker image
+      community.docker.docker_image:
+        path: .
+        name: backend_cpp:latest
+        state: present
+
+    - name: Tag Docker image and push to Docker Hub
+      community.docker.docker_image:
+        name: backend_cpp:latest
+        repository: freddyt18/backend_cpp
+        tag: latest
+        push: yes

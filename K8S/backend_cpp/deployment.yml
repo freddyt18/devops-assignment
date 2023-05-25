@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend_cpp
+spec:
+  selector:
+    matchLabels:
+      app: backend_cpp
+  template:
+    metadata:
+      labels:
+        app: backend_cpp
+    spec:
+      containers:
+      - name: backend_cpp
+        image: freddyt18/backend_cpp:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 18080

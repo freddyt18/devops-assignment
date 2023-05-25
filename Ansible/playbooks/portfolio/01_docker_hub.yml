@@ -5,7 +5,7 @@
     - name: Building portfolio image and pushing to dockerhub
       community.docker.docker_image:
         build:
-          path: .
+          path: ~/
         name: freddyt18/portfolio
         tag: latest
         push: true

@@ -27,10 +27,11 @@ spec:
           ports:
             - containerPort: 18080
           volumeMounts:
-            - name: vcpkg-tool
-              mountPath: /vcpkg
+            - mountPath: /vcpkg
+              name: vcpkg-tool
           command: ["/bin/bash", "ls /vcpkg"]
       volumes:
         - name: vcpkg-tool
           hostPath:
             path: /root/tools/vcpkg
+            type: Directory

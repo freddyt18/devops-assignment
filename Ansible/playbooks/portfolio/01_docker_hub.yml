@@ -2,15 +2,11 @@
 - hosts: localhost
   become: yes
   tasks: 
-    - name: Build Docker image
+    - name: Building portfolio image and pushing to dockerhub
       community.docker.docker_image:
-        path: .
-        name: portfolio:latest
-        state: present
-
-    - name: Tag Docker image and push to Docker Hub
-      community.docker.docker_image:
-        name: portfolio:latest
-        repository: freddyt18/portfolio
+        build:
+          path: .
+        name: freddyt18/portfolio
         tag: latest
-        push: yes
+        push: true
+        source: build

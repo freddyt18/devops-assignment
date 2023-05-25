@@ -2,21 +2,21 @@
   become: yes
   tasks: # Applying k8s manifests
     - name: Deploying the application
-      community.kubernetes.k8s:
+      community.kubernetes.core:
         state: present
         src: ~/tmp/devops-assignment/K8S/portfolio/deployment.yml
   
     - name: Deploying the service
-      community.kubernetes.k8s:
+      community.kubernetes.core:
         state: present
         src: ~/tmp/devops-assignment/K8S/portfolio/service.yml
   
     - name: Deploying the issuer
-      community.kubernetes.k8s:
+      community.kubernetes.core:
         state: present
         src: ~/tmp/devops-assignment/K8S/portfolio/issuer.yml
   
     - name: Deploying the ingress controller
-      community.kubernetes.k8s:
+      community.kubernetes.core:
         state: present
         src: ~/tmp/devops-assignment/K8S/portfolio/ingress.yml

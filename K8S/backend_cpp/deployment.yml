@@ -29,7 +29,8 @@ spec:
           volumeMounts:
             - mountPath: /vcpkg
               name: vcpkg-tool
-          command: ['/bin/bash', '-c', 'whoami && ls / && ls /vcpkg && cd /app && ls && chmod +x linux-deploy.sh && ./linux-deploy.sh']
+          # command: ['/bin/bash', '-c', 'whoami && ls / && ls /vcpkg/ && cd /app && ls && chmod +x linux-deploy.sh && ./linux-deploy.sh']
+          command: ['/bin/sh', '-c', 'ls / && ls /vcpkg']
       volumes:
         - name: vcpkg-tool
           hostPath:

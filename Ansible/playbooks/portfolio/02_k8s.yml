@@ -9,7 +9,7 @@
     - name: Deploying the service
       community.kubernetes.k8s:
         state: present
-        src: ~/personal/devops-assignment/K8S/porfolio/service.yml
+        src: ~/personal/devops-assignment/K8S/portfolio/service.yml
   
     - name: Deploying the issuer
       community.kubernetes.k8s:

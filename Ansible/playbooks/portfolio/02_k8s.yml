@@ -2,9 +2,7 @@
   become: yes
   tasks: # Applying k8s manifests
     - name: Deploying the application
-      community.kubernetes.k8s:
-        state: present
-        src: ~/tmp/devops-assignment/K8S/portfolio/deployment.yml
+      shell: cd /var/lib/jenkins/tmp/devops-assignment/K8S/portfolio && sudo kubectl patch deployment portfolio -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
   
     - name: Deploying the service
       community.kubernetes.k8s:

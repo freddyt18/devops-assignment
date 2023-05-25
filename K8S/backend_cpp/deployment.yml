@@ -32,9 +32,5 @@ spec:
           command: ["/bin/bash", "/app/linux-deploy.sh"]
       volumes:
         - name: vcpkg-tool
-          dockerVolume:
-            driver: local
-            driverOpts:
-              type: "none"
-              device: "/tools/vcpkg"
-              o: "bind"
+          hostPath:
+            path: /tools/vcpkg

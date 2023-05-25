@@ -17,10 +17,13 @@ spec:
         - name: backend-cpp
           image: freddyt18/backend_cpp:latest
           imagePullPolicy: Always
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "1"
+          # resources: #default
+          #   requests:
+          #     memory: "64Mi"
+          #     cpu: "250m"
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
           ports:
             - containerPort: 18080
           volumeMounts:

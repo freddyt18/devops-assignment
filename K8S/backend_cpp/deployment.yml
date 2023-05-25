@@ -4,6 +4,7 @@ metadata:
   name: backend-cpp
 spec:
   replicas: 3
+  minReadySeconds: 15
   selector:
     matchLabels:
       app: backend-cpp
@@ -15,7 +16,11 @@ spec:
       containers:
         - name: backend-cpp
           image: freddyt18/backend_cpp:latest
-          resources:
+          imagePullPolicy: Always
+          resources: #default
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
             limits:
               memory: "128Mi"
               cpu: "500m"
